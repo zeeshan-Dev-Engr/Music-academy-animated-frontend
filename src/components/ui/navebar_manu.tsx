@@ -13,19 +13,29 @@ const transition = {
   restSpeed: 0.001,
 };
 
+interface MenuProps {
+  setActive: (item: string | null) => void;
+  children: React.ReactNode;
+  className?: string;
+}
+
+interface MenuItemProps {
+  setActive: (item: string) => void;
+  active: string | null;
+  item: string;
+  children?: React.ReactNode;
+  className?: string;
+}
+
 export const MenuItem = ({
   setActive,
   active,
   item,
   children,
-}: {
-  setActive: (item: string) => void;
-  active: string | null;
-  item: string;
-  children?: React.ReactNode;
-}) => {
+  className,
+}: MenuItemProps) => {
   return (
-    <div onMouseEnter={() => setActive(item)} className="relative ">
+    <div onMouseEnter={() => setActive(item)} className={`relative ${className || ''}`}>
       <motion.p
         transition={{ duration: 0.3 }}
         className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
@@ -63,14 +73,12 @@ export const MenuItem = ({
 export const Menu = ({
   setActive,
   children,
-}: {
-  setActive: (item: string | null) => void;
-  children: React.ReactNode;
-}) => {
+  className,
+}: MenuProps) => {
   return (
     <nav
       onMouseLeave={() => setActive(null)} // resets the state
-      className="relative rounded-full boder border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-6 "
+      className={`relative rounded-full boder border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-6 ${className || ''}`}
     >
       {children}
     </nav>

@@ -1,0 +1,19 @@
+.custom-scrollbar {
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cyan-500) var(--emerald-500);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--emerald-500);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--cyan-500);
+  border-radius: 10px;
+  border: 2px solid var(--emerald-500);
+} 
